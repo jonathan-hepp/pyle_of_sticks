@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pyle Of Sticks Game</title>
+
+    <link href="../static/css/bootstrap.slate.min.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+      <div id="wrapper">
+        <div id="title-panel" class="jumbotron">
+            <h1 class="text-center">Pyle of Sticks Game</h1>
+            <p class="text-center">A self-learning Python-based version of the pile of sticks game.</p>
+        </div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 side-panel">
+			<h3 class="text-center">How To Play</h3>
+            <div class="inner-side-panel">
+                <div class="alert alert-info game-howto" role="alert">The game starts with a "pile" of 20 sticks</div>
+                <div class="alert alert-info game-howto" role="alert">You play against the computer</div>
+                <div class="alert alert-info game-howto" role="alert">On its own turn, each player takes up to 3 sticks off the pile</div>
+                <div class="alert alert-info game-howto" role="alert">The player that takes the last stick loses</div>
+                <div class="alert alert-info game-howto" role="alert">Note: you can also use the number keys to play with the keyboard</div>
+            </div>
+			</div>
+			<div class="col-sm-6 center-panel">
+				<center id="center-container">
+                    <div id="sticks-number" class="number-circle">{{initial_sticks}}</div>
+				    <div><h4 id="sticks-label">sticks</h4></div>
+                    
+                    <div id="sticks-panel">
+                    </div>
+                    <div id="buttons-group">
+                    <div id="buttons-label">
+                        <label for="play-buttons">Choose how many sticks you want to take:</label></div>
+				    <div id="play-buttons" class="btn-group btn-group-lg" role="group">
+					    <button type="button" class="btn btn-default">1</button>
+					    <button type="button" class="btn btn-default">2</button>
+					    <button type="button" class="btn btn-default">3</button>
+				    </div>
+                    </div>
+				</center>
+			</div>
+			<div id="gameplay" class="col-sm-3 side-panel">
+				<h3 class="text-center">Gameplay</h3>
+			</div>
+		</div>
+	</div>
+	<footer class="footer">
+		        <p>Developed by <a target="_blank" href="https://about.me/jonathan_hepp">Jonathan Hepp</a>.</p>
+                <p>Learn more about how the game works <a data-toggle="modal" href="#game-info-modal">clicking here</a>.</p>
+    </footer>
+      </div>
+
+    <div class="modal fade" id="end-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <center>
+                   <p id="dialog-message-headline"></p>
+                   <p id="dialog-message-details">Every time the Computer wins, the game plays are saved in order to improve the A.I.</p>
+                   <p>If you want to play again, click the button or press Enter!</p>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.reload(true);">Play again!</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="game-info-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Game Info</h4>
+                </div>
+                <div class="modal-body">
+                    <p><strong>About the name</strong></p>
+                    <p>No, it's not a typo, it's just a bad pun. At this point, naming stuff developed in Python like that is almost a tradition.</p>
+                    <p><strong>Origins</strong></p>
+                    <p>This game is an implementation of the programming exercise described <a href="http://nifty.stanford.edu/2014/laaksonen-vihavainen-game-of-sticks" target="_blank">here</a>.</p>
+                    <p><strong>Implementation details</strong></p>
+                    <p>Every time the computer wins a match, the details of the game are saved in its internal memory. Therefore, the more games the computer wins, more data gets collected for future games, which then makes it a harder adversary.</p>
+                    <p><strong>Technologies involved</strong></p>
+                    <p>Python, Flask, Javascript, jQuery, Bootstrap and stuff.</p>
+                    <p>If you want to know more about the application internals, check it out on <a target="_blank" href="#">Github.</a>.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <script src="../static/js/jquery-2.2.3.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/sticks_game.js"></script>
+
+  </body>
+</html>

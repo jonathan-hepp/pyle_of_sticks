@@ -1,0 +1,126 @@
+.number-circle {
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    padding: 8px;
+    margin-top: 10%;
+    background: #fff;
+    border: 2px solid #666;
+    color: #666;
+    text-align: center;
+    font: 32px Arial, sans-serif;
+}
+
+.gameplay-entries{
+    margin-bottom: 0px;
+    padding: 8px;
+}
+
+#sticks-panel{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.stick-drawing{
+    background-color: #c8c8c8;
+    border-radius: 25px;
+    height: 50px;
+    margin-bottom: 5px;
+    margin-left: 4%;
+    margin-right: 4%;
+    width: 8px;
+}
+
+#buttons-label{
+    margin-top: 15%;
+}
+
+#play-buttons > button, a {
+    outline:0 !important;
+}
+
+#play-buttons{
+    margin-bottom: 15px;
+}
+
+#dialog-message-headline {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+
+#end-modal > p {
+    text-align: center;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    background-color: darkslategray;
+}
+
+#center-container{
+    padding-top: 1px;
+}
+ /*
+body {
+    position: relative;
+    min-height: 94%;
+    padding-bottom: 30px;
+} 
+
+.container-fluid{
+    padding-bottom: 15px;
+}
+*/
+.footer{
+    background-color: #111;
+/*
+    bottom: 0px;
+    height: 10%;*/
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    padding-top: 15px;
+}
+
+.footer > p {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.alert-computer{
+    background-color: seagreen;
+    border-color: seagreen;
+}
+
+.alert-player{
+    background-color: firebrick;
+    border-color: firebrick;
+}
+
+.game-howto{
+    background-color: teal;
+    border-color: teal;
+}
+
+#title-panel{
+    padding-bottom: 5px;
+    padding-top: 0px;
+    margin-bottom: 0px;
+}
+
+.side-panel{
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: darkslategray;
+}
+
+.center-panel{
+    background-color: #272b30;
+    height: 70vh;
+    position: relative;
+}
