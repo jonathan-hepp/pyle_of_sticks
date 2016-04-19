@@ -52,6 +52,7 @@ function decrementPile(number){
     configurePlayButtons(total);
 }
 
+// Makes an ajax request to send the user's choice and return the computer's one
 function play(){
     var not_disabled_buttons = $("#play-buttons > button:not([disabled])");
     not_disabled_buttons.prop( "disabled", true );
@@ -86,8 +87,6 @@ function play(){
 }
 
 function addGameplay(player, number){
-    if($("#gameplay > .alert").length > 9){
-        $("#gameplay > .alert:first").fadeOut("normal", function() { $(this).remove();} );
-    }
+    $("#gameplay > .alert").slice(0, -7).fadeOut("normal", function() { $(this).remove();} );
     $(gameplayTemplate.replace("%(alert)", player == "Computer" ? "computer" : "player").replace("%(player)", player).replace("%(number)", number).replace("%(s)", number > 1 ? "s" : "").replace("%(total)", $("#sticks-number").text())).appendTo("#gameplay").fadeIn();
 }

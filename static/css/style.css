@@ -19,6 +19,7 @@
 #sticks-panel{
     display: flex;
     flex-flow: row wrap;
+    height: 125px;
     justify-content: center;
 }
 
@@ -65,31 +66,18 @@ body{
 #center-container{
     padding-top: 1px;
 }
- /*
-body {
-    position: relative;
-    min-height: 94%;
-    padding-bottom: 30px;
-} 
 
-.container-fluid{
-    padding-bottom: 15px;
-}
-*/
 .footer{
     background-color: #111;
-/*
-    bottom: 0px;
-    height: 10%;*/
     position: fixed;
     bottom: 0px;
     width: 100%;
-    padding-top: 15px;
+    padding-top: 5px;
 }
 
 .footer > p {
     text-align: center;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 
 .alert-computer{
@@ -121,6 +109,9 @@ body {
 
 .center-panel{
     background-color: #272b30;
-    height: 70vh;
     position: relative;
+}
+
+#gameplay{
+    margin-bottom: 60px;
 }
