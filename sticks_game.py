@@ -35,12 +35,14 @@ class Player:
 
 class HumanPlayer(Player):
     """ 
-    This subclass implements all the components needed for the human player.    
+    This subclass implements all the components needed for the human player.
     """
 
     def __init__(self, name = "You"):
         super().__init__(name)
 
+    # This method provides a default way to get the number from the user via command line.
+    # Other implementations must not call this method.
     def get_sticks_number(self, sticks_left):
         number = int(input("Player " + str(self.name) + ": "))
         return number
@@ -57,10 +59,11 @@ class ComputerPlayer(Player):
     def __init__(self, name = "Computer", number_of_sticks = 20):
         super().__init__(name)
         self._max_number = number_of_sticks + 1
-        # The pool is where the Computer selects its play.
-        # There is one list o values for each stick.
+        # The pool is where the Computer selects its plays.
+        # There is one list o values to choose from for each stick of the pile.
         self.pool = [[1,2,3] for x in range(self._max_number)]
         # The register keeps track of the plays in the current match.
+        # If the computer wins the game, this plays will be added to the pool.
         self._register = {k:None for k in range(self._max_number)}
     
     # Note: the way the number gets selected is not optimal
@@ -72,9 +75,9 @@ class ComputerPlayer(Player):
     # The whole point of this approach is to avoid interfering with
     # the number selection process.
     def get_sticks_number(self, sticks_left):
-        number_to_play = choice(self.pool[sticks_left-1])
+        number_to_play = choice(self.pool[sticks_left])
         while number_to_play > sticks_left:
-            number_to_play = choice(self.pool[sticks_left-1])
+            number_to_play = choice(self.pool[sticks_left])
         self._register[sticks_left] = number_to_play
         return number_to_play
     
@@ -103,7 +106,7 @@ class EndOfGame(Exception):
 class Game:
     """ 
     Although the game is meant to be played by 2 players using 20 sticks,
-    this class is flexible enough to allow an arbitrary number of those.
+    this class is flexible enough to allow an arbitrary number of both players and sticks.
     """
 
     def __init__(self, pile_of_sticks, computer_player, human_players):
@@ -111,14 +114,19 @@ class Game:
         self.computer_player = computer_player
         self.human_players = human_players
         self.current_player = None
-        all_players = human_players[:]
-        all_players.insert(0, computer_player)
+        all_players = [computer_player]
+        all_players.extend(human_players)
         self._players_deque = deque(all_players)
 
     def next_round(self):
         self._players_deque.rotate()
         self.current_player = self._players_deque[0]
-
+    
+    # This method takes the number to be played and take it from the pile.
+    # By default, it will change the current player by calling the 'next_round' method.
+    # If the implementation wants to control the round manually, the method should
+    # be called with 'rotate' = False.
+    # This method throws EndOfGame exception if the pile runs out of sticks.
     def play(self, number, rotate = True):
         if rotate:
             self.next_round()
@@ -128,6 +136,7 @@ class Game:
 
 
 if __name__ == '__main__':
+    # A simple command line implementation of the game above
     print("Welcome to the Game of Sticks!")
     pile = PileOfSticks()
     player1 = HumanPlayer(input("Type your name: "))
